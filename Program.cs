@@ -3,25 +3,54 @@
 // N = 5 -> "5, 4, 3, 2, 1"
 // N = 8 -> "8, 7, 6, 5, 4, 3, 2, 1"
 
-Console.Clear();
-int Prompt(string message)
+// Console.Clear();
+// int Prompt(string message)
+// {
+//     Console.Write(message);
+//     int result = Convert.ToInt32(Console.ReadLine());
+//     return result;
+// }
+
+// int NaturalNumber(int n, int m)
+// {
+//     if (n == m) return n;
+//     else Console.Write($"{NaturalNumber(n, m + 1)}, ");
+//     return m;
+// }
+
+// int n = Prompt("Input N: ");
+// if (n < 1)
+// {
+//     Console.WriteLine("Ввдите положительное число!");
+//     return;
+// }
+// Console.WriteLine(NaturalNumber(n, 1));
+
+// Задача 66: Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
+// M = 1; N = 15 -> 120
+// M = 4; N = 8. -> 30
+
+Console.Write("Введите число M: ");
+int m = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Введите число N: ");
+int n = Convert.ToInt32(Console.ReadLine());
+
+SumFromMToN(m, n);
+void SumFromMToN(int m, int n)
 {
-    Console.Write(message);
-    int result = Convert.ToInt32(Console.ReadLine());
-    return result;
+    Console.Write(SumMN(m - 1, n));
 }
 
-int NaturalNumber(int n, int m)
+int SumMN(int m, int n)
 {
-    if (n == m) return n;
-    else Console.Write($"{NaturalNumber(n, m + 1)}, ");
-    return m;
+    int res = m;
+    if (m == n)
+        return 0;
+    else
+    {
+        m++;
+        res = m + SumMN(m, n);
+        return res;
+    }
 }
-
-int n = Prompt("Input N: ");
-if (n < 1)
-{
-    Console.WriteLine("Ввдите положительное число!");
-    return;
-}
-Console.WriteLine(NaturalNumber(n, 1));
